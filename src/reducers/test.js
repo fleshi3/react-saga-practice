@@ -1,13 +1,13 @@
 const initialState = {
-  title: 'Book',
-  genre: 'Adventure',
-  availability: true,
+  value: 0
 };
 
-const test = (state = initialState, action) => {
+const test = (state = initialState.value, action) => {
   switch (action.type) {
-    case 'INITIAL':
-      return state;
+    case "INCREMENT":
+      return state + 1;
+    case "DECREMENT":
+      return state - 1;
     default:
       return state;
   }
