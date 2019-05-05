@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { incrementValue, decrementValue } from "./actions/index";
+import {
+  incrementValue,
+  decrementValue,
+  incrementAsync
+} from "./actions/index";
 import "./App.css";
 
 const mapStateToProps = state => {
@@ -13,12 +17,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     increment: () => dispatch(incrementValue()),
-    decrement: () => dispatch(decrementValue())
+    decrement: () => dispatch(decrementValue()),
+    incrementAsync: () => dispatch(incrementAsync())
   };
 };
 
 function App(props) {
-  const { value, increment, decrement } = props;
+  const { value, increment, decrement, incrementAsync } = props;
   return (
     <div className="App">
       <div>{value}</div>
@@ -31,7 +36,9 @@ function App(props) {
         </button>
       </div>
       <div>
-        <button type="button">async +</button>
+        <button type="button" onClick={incrementAsync}>
+          async +
+        </button>
       </div>
     </div>
   );
